@@ -23,12 +23,23 @@ Vagrant AlmaLinux 8.9 VM creation for martev2 workspace for development purpose
 
 ## How to login to VM
 * vagrant ssh
+* cd martev2_ws [MARTev2 workspace containing all the necessary builds]
 
 ## How to shutdown the VM
 * vagrant halt
 
 ## How to destroy the VM
 * vagrant destroy
+
+## Bug
+* The 'vagrant up' strucks before cloning the martev2 codebase from github.
+![Bug](./Bug.png)
+* Press "Ctrl+C".
+* Login to the VM [vagrant ssh].
+* Shutdown the VM [sudo shutdown now].
+* Delete the "martev2_ws" [rm -rf marteve2_ws] folder in host machine.
+* Create the "martev2_ws" [mkdir marteve2_ws] folder in host machine.
+* Start the VM provision [vagrant up --provision].
 
 ## Network
 This VM has no public IP assigned. Please use "nmtui" utility in AlmaLinux VM to configure the network.
