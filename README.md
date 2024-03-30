@@ -43,6 +43,7 @@ Vagrant AlmaLinux 8.9 VM creation for martev2 workspace for development purpose
 * Shutdown the VM [sudo shutdown now].
 * Delete the "martev2_ws" [rm -rf marteve2_ws] folder in host machine.
 * Create the "martev2_ws" [mkdir marteve2_ws] folder in host machine.
+* Start the VM [vagrant up].
 * Start the VM provision [vagrant up --provision].
 
 ## Network
