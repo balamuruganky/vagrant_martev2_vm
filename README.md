@@ -33,7 +33,7 @@ Vagrant AlmaLinux 8.9 VM creation for martev2 workspace for development purpose
 
 ## Bug
 * The 'vagrant up' strucks before cloning the martev2 codebase from github.
-![Bug](./Bug.png)
+![Bug](./images/Bug.png)
 * Press "Ctrl+C".
 * Login to the VM [vagrant ssh].
 * Shutdown the VM [sudo shutdown now].
