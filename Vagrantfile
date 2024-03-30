@@ -20,6 +20,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 #
+Vagrant.require_version ">= 1.7.0"
 
 VM_NAME = "martev2"
 WS_NAME = (VM_NAME + "_ws")
@@ -29,6 +30,7 @@ WS_NAME = (VM_NAME + "_ws")
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
 Vagrant.configure("2") do |config|
+  PROJECT_ROOT = File.expand_path(File.join(File.dirname(File.expand_path(__FILE__)), '..'))
   # The most common configuration options are documented and commented below.
   # For a complete reference, please see the online documentation at
   # https://docs.vagrantup.com.
@@ -36,7 +38,12 @@ Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
   config.vm.box = "almalinux/8"
-  config.vm.box_version = "8.9.20231125"
+  config.vm.provider "virtualbox" do |vb|
+    config.vm.box_version = "8.9.20231219"
+  end
+  config.vm.provider "libvirt" do |v, override|
+    override.vm.box_version = "8.9.20231125"
+  end
 
   config.vm.disk :disk, size: "50GB", primary: true
 
@@ -88,7 +95,7 @@ Vagrant.configure("2") do |config|
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
   #
-  config.vm.provider "virtualbox" do |vb|
+  config.vm.provider "virtualbox" || "libvirt" do |vb|
   #   # Display the VirtualBox GUI when booting the machine
   #   vb.gui = true
   #
