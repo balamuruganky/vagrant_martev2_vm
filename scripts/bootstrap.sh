@@ -28,6 +28,8 @@ rhel_install() {
     dnf -y install python3.11 python3.11-pip perl-ExtUtils-ParseXS
     dnf -y install https://www.mdsplus.org/dist/el8/stable/RPMS/noarch/mdsplus-repo-7.132-0.el8.noarch.rpm
     dnf -y install mdsplus-kernel* mdsplus-java* mdsplus-python* mdsplus-devel*
+    systemctl stop firewalld
+    systemctl disable firewalld
     update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 1
 }
 
