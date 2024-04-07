@@ -22,7 +22,7 @@ pull_sources() {
     git config --global http.postBuffer 524288000
     git config --global core.compression 0
     cd "$WS_PATH"
-    git clone https://vcis-gitlab.f4e.europa.eu/aneto/MARTe2.git MARTe2-dev
+    git clone https://github.com/ukaea/MARTe2.git MARTe2-dev
     git clone -b "#351_OPCUA-Review" https://github.com/balamuruganky/MARTe2-components.git --depth=1
     git clone https://github.com/balamuruganky/MARTe2-demos-padova.git
     git clone -b ${OPCUA_BRANCH} https://github.com/open62541/open62541.git --depth=1
