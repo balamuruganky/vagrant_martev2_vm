@@ -120,6 +120,6 @@ Vagrant.configure("2") do |config|
   config.vm.provision :shell, :path => "./scripts/clone_epicsbase.sh", :args => "/home/vagrant/'#{WS_NAME}'", :privileged => false
   config.vm.provision :shell, :path => "./scripts/epicsbase_exports.sh", :args => "/home/vagrant/'#{WS_NAME}'"
   config.vm.provision :shell, :path => "./scripts/build_epicsbase.sh", :args => "/home/vagrant/'#{WS_NAME}'", :privileged => false
-  config.vm.provision :shell, :path => "./scripts/build_sources.sh", :args => "/home/vagrant/'#{WS_NAME}'", :privileged => false
   config.vm.provision :shell, :path => "./scripts/martev2_exports.sh", :args => "/home/vagrant/'#{WS_NAME}'"
+  config.vm.provision :shell, :path => "./scripts/build_sources.sh", :args => "/home/vagrant/'#{WS_NAME}'", :privileged => false
 end
