@@ -8,9 +8,10 @@ if [ ! "$#" -ge 1 ]; then
 fi
 
 # WS_PATH
-WS_PATH="/home/vagrant/martev2_ws"
 if [ ! -z "$1" ]; then
     WS_PATH=$1
+else
+    WS_PATH="/home/vagrant/martev2_ws"
 fi
 
 echo "***** Workspace Path : $WS_PATH"

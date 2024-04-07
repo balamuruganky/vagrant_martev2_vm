@@ -9,9 +9,10 @@ if [ ! "$#" -ge 1 ]; then
 fi
 
 # DISTRO
-DISTRO="rhel"
 if [ ! -z "$1" ]; then
     DISTRO=$1
+else
+     DISTRO="rhel"
 fi
 
 rhel_install() {
