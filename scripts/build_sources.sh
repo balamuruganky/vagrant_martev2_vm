@@ -25,7 +25,6 @@ pull_sources() {
     git clone https://vcis-gitlab.f4e.europa.eu/aneto/MARTe2.git MARTe2-dev
     git clone -b "#351_OPCUA-Review" https://github.com/balamuruganky/MARTe2-components.git --depth=1
     git clone https://github.com/balamuruganky/MARTe2-demos-padova.git
-    git clone -b ${EPICS_BRANCH}  --recursive https://github.com/epics-base/epics-base.git epics-base --depth=1
     git clone -b ${OPCUA_BRANCH} https://github.com/open62541/open62541.git --depth=1
     wget https://vcis-gitlab.f4e.europa.eu/aneto/MARTe2-demos-padova/raw/develop/Other/SDN_1.0.12_nonCCS.tar.gz
     tar zxvf SDN_1.0.12_nonCCS.tar.gz
@@ -35,16 +34,10 @@ pull_sources() {
     ls -lart
 }
 
-build_epics() {
-    cd "$WS_PATH" || { echo "Unable to cd to $WS_PATH"; exit 56; }
-
+build_opcua() {
+    cd "${WS_PATH}" || { echo "Unable to cd to $WS_PATH"; exit 56; }
     # Build the open62541 library:
     mkdir -p ${WS_PATH}/open62541/build && cd $_ && cmake3 -DUA_ENABLE_AMALGAMATION=ON .. && make
-
-    # Build the EPICS-base
-    ln -sf epics-base epics-base-${EPICS_BRANCH}
-    cd ${WS_PATH}/epics-base && echo "OP_SYS_CXXFLAGS += -std=c++11" >> configure/os/CONFIG_SITE.linux-x86_64.Common
-    cd ${WS_PATH}/epics-base && make
 }
 
 build_marte2() {
@@ -59,6 +52,6 @@ build_marte2_demos() {
 }
 
 pull_sources
-build_epics
+build_opcua
 build_marte2
 build_marte2_demos

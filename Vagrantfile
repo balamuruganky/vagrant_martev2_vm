@@ -100,8 +100,8 @@ Vagrant.configure("2") do |config|
   #   vb.gui = true
   #
   #   # Customize the amount of memory on the VM:
-     vb.memory = "2048"
-     vb.cpus = 2
+     vb.memory = "512"
+     vb.cpus = 1
   end
   config.vm.provider "virtualbox" do |v, override|
     override.memory = "2048"
@@ -116,7 +116,10 @@ Vagrant.configure("2") do |config|
   # documentation for more information about their specific syntax and use.
   #
   config.vm.provision :shell, :path => "./scripts/swap.sh", :args => "2G"
-  config.vm.provision :shell, :path => "./scripts/martev2_exports.sh", :args => "/home/vagrant/'#{WS_NAME}'"
-  config.vm.provision :shell, :path => "./scripts/bootstrap.sh", :args => "rhel"   
+  config.vm.provision :shell, :path => "./scripts/bootstrap.sh", :args => "rhel"
+  config.vm.provision :shell, :path => "./scripts/clone_epicsbase.sh", :args => "/home/vagrant/'#{WS_NAME}'", :privileged => false
+  config.vm.provision :shell, :path => "./scripts/epicsbase_exports.sh", :args => "/home/vagrant/'#{WS_NAME}'"
+  config.vm.provision :shell, :path => "./scripts/build_epicsbase.sh", :args => "/home/vagrant/'#{WS_NAME}'", :privileged => false
   config.vm.provision :shell, :path => "./scripts/build_sources.sh", :args => "/home/vagrant/'#{WS_NAME}'", :privileged => false
+  config.vm.provision :shell, :path => "./scripts/martev2_exports.sh", :args => "/home/vagrant/'#{WS_NAME}'"
 end
