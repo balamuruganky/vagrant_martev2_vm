@@ -27,8 +27,6 @@ epics_env() {
     chmod +x ${EPICS_BASE_EXPORTS}
 }
 
-epics_env
-
 if [ -f "$EPICS_BASE_EXPORTS" ]; then
     echo "$EPICS_BASE_EXPORTS exists. No action required."
 else
